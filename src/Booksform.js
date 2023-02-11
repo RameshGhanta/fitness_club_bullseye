@@ -32,64 +32,62 @@ function BooksForm() {
   };
 
   return (
-    <div id="App5" style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1491841573634-28140fc7ced7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80")', backgroundSize: 'cover', minHeight: '100vh' }}>
+    <div id="App5" style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80")', backgroundSize: 'cover', minHeight: '100vh' }}>
         <h1 className='App9'>BookList Maintenance Form</h1>
+        <p style={{color:'aqua', textAlign:'center'}}>Add and view your books using local storage</p>
         
     <div className='parent'>
         <div className='child'>
-      <form onSubmit={handleSubmit}>
-        <table>
-            <tr>
-       <td><label>
-          Title: </label></td> 
-        <td> <input type="text" value={title} onChange={(event) => setTitle(event.target.value)} /> </td> 
-       
-        </tr>
-        <tr>
+  
+        <form onSubmit={handleSubmit}>
 
-      <td><label>
-          Author: </label></td>  
-         <td><input type="text" value={author} onChange={(event) => setAuthor(event.target.value)} /></td> 
-       
-        </tr>
-<tr>
-        <td><label>
-         ISBN:</label> </td>
-<td><input type="text" value={isbn} onChange={(event) => setIsbn(event.target.value)} /></td>
-        
-       </tr>
-       <div className='App8'>
-        <button type="submit" >Add Book</button>
-        </div>
-        
-        </table>
-      </form>
+<div className="mb-3">
+  <label className="fw-bold text-primary">TITLE</label>
+  <input className="form-control" placeholder="Enter Title" type="text" value={title} onChange={(event) => setTitle(event.target.value)}/>
+</div>
+
+<div className="mb-3">
+  <label className="fw-bold text-primary">AUTHOR</label>
+  <input className="form-control" placeholder="Enter Author" type="text" value={author} onChange={(event) => setAuthor(event.target.value)}/>
+</div>
+
+<div className="mb-3">
+  <label className="fw-bold text-primary">ISBN</label>
+  <input name="password" className="form-control" placeholder="Enter ISBN" type="text" value={isbn} onChange={(event) => setIsbn(event.target.value)}/>
+</div>
+
+<div className="d-grid">
+  <button type="submit" className="btn btn-success">Add</button>
+</div>
+</form>
       </div>
       <div className='child1'>
-      <table className='App7'>
-        <thead className='App7'>
-          <tr className='App7'>
-            <th className='App7'>Title</th>
-            <th className='App7'>Author</th>
-            <th className='App7'>ISBN</th>
-            <th className='App7'>Action</th>
+        <div className="table-responsive">
+      <table class="table table-hover table-striped">
+        <thead >
+          <tr >
+            <th>Title</th>
+            <th>Author</th>
+            <th>ISBN</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
           {bookList.map((book, index) => (
             <tr key={index} onClick={() => handleBookSelect(book)}>
-              <td className='App7'>{book.title}</td>
-              <td className='App7'>{book.author}</td>
-              <td className='App7'>{book.isbn}</td>
+              <td  style={{color:'blue'}}>{book.title}</td>
+              <td style={{color:'blue'}}>{book.author}</td>
+              <td style={{color:'blue'}}>{book.isbn}</td>
               <td>
-                <button onClick={() => handleDeleteBook(book)}>Delete</button>
+                <button onClick={() => handleDeleteBook(book)} className=' btn-danger'>Delete</button>
               </td>
             </tr>
           ))}
         </tbody>
       </table>
+      </div>
       
-      <button onClick={handleRemoveAllBooks} >Remove All</button>
+      <button onClick={handleRemoveAllBooks} className='btn btn-danger' >Remove All</button>
       </div>
       
     </div>
